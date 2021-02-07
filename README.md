@@ -10,7 +10,7 @@ All customizations are centralized in the [customize.sh](https://github.com/esca
 
 ## When will a new release be created?
 
-A new release of the customized Raspberry Pi OS image is created on the 1st of each month at 06:00.
+A new release of the customized Raspberry Pi OS image is created every Monday at 06:00.
 
 ## How to start a build locally?
 

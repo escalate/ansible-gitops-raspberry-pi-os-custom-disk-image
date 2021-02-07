@@ -1,7 +1,7 @@
 name: Customize Raspberry Pi OS image
 on:  # yamllint disable-line rule:truthy
   schedule:
-    - cron: '0 6 1 * *'
+    - cron: '0 6 * * 1'
 jobs:
   build_release:
     name: Build and release custom image
