@@ -1,6 +1,6 @@
 .PHONY: build
 build: lint
-	build.sh
+	./build.sh
 
 .PHONY: lint
 lint:
