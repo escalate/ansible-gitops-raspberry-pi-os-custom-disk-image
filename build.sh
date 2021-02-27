@@ -13,7 +13,7 @@ wget --no-verbose --no-clobber "https://downloads.raspberrypi.org/raspios_lite_a
 sha256sum --check "${DOWNLOAD_ZIP_FILE}.sha256"
 
 echo "Unarchive zip file"
-unzip -qfo "${DOWNLOAD_ZIP_FILE}"
+unzip -qo "${DOWNLOAD_ZIP_FILE}"
 
 echo "Set up loop devices"
 LOOP_DEVICE="$(sudo losetup --find --show --partscan "${DOWNLOAD_FILENAME}.img")"
