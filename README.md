@@ -1,4 +1,4 @@
-# Custom Raspberry Pi OS image
+# Raspberry Pi OS custom image
 
 A simple shell script to customize the latest [Raspberry Pi OS Lite (32-bit)](https://www.raspberrypi.org/software/operating-systems/) image.
 With this approach you can only add / modify / delete static files inside the image.
