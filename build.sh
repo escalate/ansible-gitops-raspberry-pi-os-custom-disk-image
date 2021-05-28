@@ -34,7 +34,9 @@ echo "Umount loop devices"
 # Wait 5 secs to get rid of "target is busy" error
 sleep 5
 sudo umount boot
+rm --recursive --force boot
 sudo umount rootfs
+rm --recursive --force rootfs
 
 echo "Detach loop devices"
 sudo losetup --detach-all
