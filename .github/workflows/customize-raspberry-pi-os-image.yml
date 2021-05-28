@@ -28,6 +28,7 @@ jobs:
       - name: Build custom image
         run: |
           make version
+          make lint
           make build
 
       - name: Set environment variables

@@ -1,5 +1,5 @@
 .PHONY: build
-build: lint
+build: clean
 	./build.sh
 
 .PHONY: lint
