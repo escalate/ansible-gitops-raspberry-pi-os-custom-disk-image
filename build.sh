@@ -48,4 +48,5 @@ echo "Hash custom image archive"
 sha256sum "${DOWNLOAD_FILENAME}-custom.tar.bz2" > "${DOWNLOAD_FILENAME}-custom.tar.bz2.sha256"
 
 echo "Show final artifacts"
-ls -l ./*-custom.tar.bz2*
+ls -lh ./*.img
+ls -lh ./*-custom.tar.bz2*
