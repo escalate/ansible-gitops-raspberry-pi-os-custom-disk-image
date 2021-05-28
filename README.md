@@ -10,11 +10,7 @@ To use native OS commands like apt you have to use QEMU user emulation.
 
 All customizations are centralized in the [customize.sh](https://github.com/escalate/custom-raspberry-pi-os-image/blob/master/customize.sh) script to separate it from the build process.
 
-## When will a new release be created?
-
-A new release of the customized Raspberry Pi OS image is created every Monday at 06:00.
-
-## How to start a build locally?
+## How to start the build process locally?
 
 ```
 make build
