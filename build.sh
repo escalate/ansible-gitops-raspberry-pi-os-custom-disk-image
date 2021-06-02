@@ -51,4 +51,6 @@ fi
 
 echo "Show final artifacts"
 ls -lh ./*.img
-ls -lh ./*-custom.tar.bz2*
+if [ -n "${GITHUB_ACTIONS}" ]; then
+  ls -lh ./*-custom.tar.bz2*
+fi
