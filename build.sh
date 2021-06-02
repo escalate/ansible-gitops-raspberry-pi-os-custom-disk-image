@@ -41,11 +41,13 @@ rm --recursive --force rootfs
 echo "Detach loop devices"
 sudo losetup --detach-all
 
-echo "Compress custom image"
-tar --create --bzip2 --file "${DOWNLOAD_FILENAME}-custom.tar.bz2" "${DOWNLOAD_FILENAME}.img"
+if [ -n "${GITHUB_ACTIONS}" ]; then
+  echo "Compress custom image"
+  tar --create --bzip2 --file "${DOWNLOAD_FILENAME}-custom.tar.bz2" "${DOWNLOAD_FILENAME}.img"
 
-echo "Hash custom image archive"
-sha256sum "${DOWNLOAD_FILENAME}-custom.tar.bz2" > "${DOWNLOAD_FILENAME}-custom.tar.bz2.sha256"
+  echo "Hash custom image archive"
+  sha256sum "${DOWNLOAD_FILENAME}-custom.tar.bz2" > "${DOWNLOAD_FILENAME}-custom.tar.bz2.sha256"
+fi
 
 echo "Show final artifacts"
 ls -lh ./*.img
