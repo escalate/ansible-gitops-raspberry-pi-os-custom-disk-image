@@ -1,6 +1,10 @@
-.PHONY: build
-build: clean
-	./build.sh
+.PHONY: build32
+build32: clean
+	./build.sh 32
+
+.PHONY: build64
+build64: clean
+	./build.sh 64
 
 .PHONY: lint
 lint:

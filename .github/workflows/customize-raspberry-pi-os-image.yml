@@ -28,7 +28,7 @@ jobs:
         run: |
           make version
           make lint
-          make build
+          make build32
 
       - name: Set environment variables
         run: |
