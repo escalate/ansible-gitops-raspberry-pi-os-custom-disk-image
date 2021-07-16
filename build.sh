@@ -3,17 +3,17 @@ set -eo pipefail
 
 ARCH="$1"
 
-echo "Customize ${ARCH}-bit version of Raspberry Pi OS Lite image"
+echo "Customize ${ARCH}-bit version of Raspberry Pi OS Lite disk image"
 
 if [ "${ARCH}" = "32" ]; then
   DOWNLOAD_DIR="$(curl --silent 'https://downloads.raspberrypi.org/raspios_lite_armhf/images/?C=M;O=D' | grep --extended-regexp --only-matching 'raspios_lite_armhf-[0-9]{4}-[0-9]{2}-[0-9]{2}' | head -n 1)"
   DOWNLOAD_ZIP_FILE="$(curl --silent "https://downloads.raspberrypi.org/raspios_lite_armhf/images/${DOWNLOAD_DIR}/" | grep --extended-regexp --only-matching '[0-9]{4}-[0-9]{2}-[0-9]{2}-raspios-buster-armhf-lite\.zip' | head -n 1)"
   DOWNLOAD_FILENAME="${DOWNLOAD_ZIP_FILE%%.*}"
 
-  echo "Download latest image archive"
+  echo "Download latest disk image archive"
   wget --no-verbose --no-clobber "https://downloads.raspberrypi.org/raspios_lite_armhf/images/${DOWNLOAD_DIR}/${DOWNLOAD_ZIP_FILE}"
 
-  echo "Verify downloaded image archive"
+  echo "Verify downloaded disk image archive"
   wget --no-verbose --no-clobber "https://downloads.raspberrypi.org/raspios_lite_armhf/images/${DOWNLOAD_DIR}/${DOWNLOAD_ZIP_FILE}.sha256"
   sha256sum --check "${DOWNLOAD_ZIP_FILE}.sha256"
 fi
@@ -23,10 +23,10 @@ if [ "${ARCH}" = "64" ]; then
   DOWNLOAD_ZIP_FILE="$(curl --silent "https://downloads.raspberrypi.org/raspios_lite_arm64/images/${DOWNLOAD_DIR}/" | grep --extended-regexp --only-matching '[0-9]{4}-[0-9]{2}-[0-9]{2}-raspios-buster-arm64-lite\.zip' | head -n 1)"
   DOWNLOAD_FILENAME="${DOWNLOAD_ZIP_FILE%%.*}"
 
-  echo "Download latest image archive"
+  echo "Download latest disk image archive"
   wget --no-verbose --no-clobber "https://downloads.raspberrypi.org/raspios_lite_arm64/images/${DOWNLOAD_DIR}/${DOWNLOAD_ZIP_FILE}"
 
-  echo "Verify downloaded image archive"
+  echo "Verify downloaded disk image archive"
   wget --no-verbose --no-clobber "https://downloads.raspberrypi.org/raspios_lite_arm64/images/${DOWNLOAD_DIR}/${DOWNLOAD_ZIP_FILE}.sha256"
   sha256sum --check "${DOWNLOAD_ZIP_FILE}.sha256"
 fi
@@ -34,8 +34,19 @@ fi
 echo "Unarchive zip file"
 unzip -qo "${DOWNLOAD_ZIP_FILE}"
 
+echo "Append 512MB to disk image"
+dd if=/dev/zero bs=512M count=1 >> "${DOWNLOAD_FILENAME}.img"
+
 echo "Set up loop devices"
 LOOP_DEVICE="$(sudo losetup --find --show --partscan "${DOWNLOAD_FILENAME}.img")"
+
+echo "Resize rootfs partition"
+DISK_IMAGE_END="$(sudo parted --machine "${LOOP_DEVICE}" print free | tail -1 | cut -d ":" -f 3)"
+sudo parted "${LOOP_DEVICE}" resizepart 2 "${DISK_IMAGE_END}"
+
+echo "Grow filesystem of rootfs partition"
+sudo e2fsck -f "${LOOP_DEVICE}p2"
+sudo resize2fs "${LOOP_DEVICE}p2"
 
 echo "Mount loop devices"
 mkdir --parents boot
@@ -43,8 +54,8 @@ sudo mount "${LOOP_DEVICE}p1" boot
 mkdir --parents rootfs
 sudo mount "${LOOP_DEVICE}p2" rootfs
 
-echo "Customize image"
-./customize.sh
+echo "Customize disk image"
+./customize.sh "${DOWNLOAD_ZIP_FILE}"
 
 echo "Flush write cache"
 sync
@@ -60,16 +71,5 @@ rm --recursive --force rootfs
 echo "Detach loop devices"
 sudo losetup --detach-all
 
-if [ -n "${GITHUB_ACTIONS}" ]; then
-  echo "Compress custom image"
-  tar --create --bzip2 --file "${DOWNLOAD_FILENAME}-custom.tar.bz2" "${DOWNLOAD_FILENAME}.img"
-
-  echo "Hash custom image archive"
-  sha256sum "${DOWNLOAD_FILENAME}-custom.tar.bz2" > "${DOWNLOAD_FILENAME}-custom.tar.bz2.sha256"
-fi
-
-echo "Show final artifacts"
+echo "Show customized disk image"
 ls -lh ./*.img
-if [ -n "${GITHUB_ACTIONS}" ]; then
-  ls -lh ./*-custom.tar.bz2*
-fi
