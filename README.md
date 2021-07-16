@@ -1,5 +1,7 @@
 # Ansible GitOps - Raspberry Pi OS custom disk image
 
+[![Lint](https://github.com/escalate/ansible-gitops-raspberry-pi-os-custom-image/actions/workflows/lint.yml/badge.svg?branch=master&event=push)](https://github.com/escalate/ansible-gitops-raspberry-pi-os-custom-image/actions/workflows/lint.yml)
+
 This build tool creates a customized Raspberry Pi OS disk image which initiates the Ansible GitOps workflow on first boot.
 
 ## How does it work?
