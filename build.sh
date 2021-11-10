@@ -7,7 +7,7 @@ echo "Customize ${ARCH}-bit version of Raspberry Pi OS Lite disk image"
 
 if [ "${ARCH}" = "32" ]; then
   DOWNLOAD_DIR="$(curl --silent 'https://downloads.raspberrypi.org/raspios_lite_armhf/images/?C=M;O=D' | grep --extended-regexp --only-matching 'raspios_lite_armhf-[0-9]{4}-[0-9]{2}-[0-9]{2}' | head -n 1)"
-  DOWNLOAD_ZIP_FILE="$(curl --silent "https://downloads.raspberrypi.org/raspios_lite_armhf/images/${DOWNLOAD_DIR}/" | grep --extended-regexp --only-matching '[0-9]{4}-[0-9]{2}-[0-9]{2}-raspios-buster-armhf-lite\.zip' | head -n 1)"
+  DOWNLOAD_ZIP_FILE="$(curl --silent "https://downloads.raspberrypi.org/raspios_lite_armhf/images/${DOWNLOAD_DIR}/" | grep --extended-regexp --only-matching '[0-9]{4}-[0-9]{2}-[0-9]{2}-raspios-[a-z]+-armhf-lite\.zip' | head -n 1)"
   DOWNLOAD_FILENAME="${DOWNLOAD_ZIP_FILE%%.*}"
 
   echo "Download latest disk image archive"
@@ -20,7 +20,7 @@ fi
 
 if [ "${ARCH}" = "64" ]; then
   DOWNLOAD_DIR="$(curl --silent 'https://downloads.raspberrypi.org/raspios_lite_arm64/images/?C=M;O=D' | grep --extended-regexp --only-matching 'raspios_lite_arm64-[0-9]{4}-[0-9]{2}-[0-9]{2}' | head -n 1)"
-  DOWNLOAD_ZIP_FILE="$(curl --silent "https://downloads.raspberrypi.org/raspios_lite_arm64/images/${DOWNLOAD_DIR}/" | grep --extended-regexp --only-matching '[0-9]{4}-[0-9]{2}-[0-9]{2}-raspios-buster-arm64-lite\.zip' | head -n 1)"
+  DOWNLOAD_ZIP_FILE="$(curl --silent "https://downloads.raspberrypi.org/raspios_lite_arm64/images/${DOWNLOAD_DIR}/" | grep --extended-regexp --only-matching '[0-9]{4}-[0-9]{2}-[0-9]{2}-raspios-[a-z]+-arm64-lite\.zip' | head -n 1)"
   DOWNLOAD_FILENAME="${DOWNLOAD_ZIP_FILE%%.*}"
 
   echo "Download latest disk image archive"
