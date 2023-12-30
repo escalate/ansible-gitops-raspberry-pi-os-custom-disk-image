@@ -1,3 +1,7 @@
+# vim
+*.swp
+
+# output
 *.zip
 *.zip.*
 *.img
