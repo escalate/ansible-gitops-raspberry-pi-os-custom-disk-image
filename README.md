@@ -1,4 +1,4 @@
-[![Test](https://github.com/escalate/ansible-gitops-raspberry-pi-os-custom-disk-image/actions/workflows/test.yml/badge.svg?branch=master&event=push)](https://github.com/escalate/ansible-gitops-raspberry-pi-os-custom-disk-image/actions/workflows/test.yml)
+[![Tests](https://github.com/escalate/ansible-gitops-raspberry-pi-os-custom-disk-image/actions/workflows/tests.yml/badge.svg?branch=master&event=push)](https://github.com/escalate/ansible-gitops-raspberry-pi-os-custom-disk-image/actions/workflows/tests.yml)
 
 # Ansible GitOps - Raspberry Pi OS custom disk image
 
