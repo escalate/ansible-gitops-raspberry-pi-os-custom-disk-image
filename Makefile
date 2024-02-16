@@ -1,4 +1,5 @@
-SHELL = /bin/bash -eo pipefail
+SHELL = /bin/bash
+.SHELLFLAGS = -e -o pipefail -c
 
 .PHONY: build-32bit
 build-32bit: clean
@@ -13,16 +14,6 @@ build-64bit: clean
 	test -n "$(ANSIBLE_REPOSITORY_URL)" # check env variable $$ANSIBLE_REPOSITORY_URL
 	test -n "$(ANSIBLE_VAULT_PASSWORD)" # check env variable $$ANSIBLE_VAULT_PASSWORD
 	./build.sh 64
-
-.PHONY: lint
-lint:
-	ec
-	find . -name "*.sh" -exec shellcheck {} \;
-
-.PHONY: version
-version:
-	ec --version
-	shellcheck --version
 
 .PHONY: clean
 clean:
