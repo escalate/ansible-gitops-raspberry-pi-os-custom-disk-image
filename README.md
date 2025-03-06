@@ -30,6 +30,7 @@ export ANSIBLE_VAULT_PASSWORD=s3cret
 2. Start the build process with one of the following commands.
 
 32-bit OS version:
+
 ```
 make build-32bit
 ```

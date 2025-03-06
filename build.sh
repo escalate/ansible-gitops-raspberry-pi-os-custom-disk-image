@@ -35,7 +35,7 @@ echo "Unarchive zip file"
 unzip -qo "${DOWNLOAD_ZIP_FILE}"
 
 echo "Append 512MB to disk image"
-dd if=/dev/zero bs=512M count=1 >> "${DOWNLOAD_FILENAME}.img"
+dd if=/dev/zero bs=512M count=1 >>"${DOWNLOAD_FILENAME}.img"
 
 echo "Set up loop devices"
 LOOP_DEVICE="$(sudo losetup --find --show --partscan "${DOWNLOAD_FILENAME}.img")"
