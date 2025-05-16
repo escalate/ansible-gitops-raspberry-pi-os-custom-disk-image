@@ -4,7 +4,10 @@ set -eo pipefail
 IMAGE_ARCHIVE_FILE="${1}"
 
 echo "Activate SSHD on boot"
-sudo touch bootfs/ssh
+sudo touch bootfs/ssh.txt
+
+echo "Add default user pi with password raspberry"
+echo 'pi:$6$MVEGdHTqed7c7za0$ESdhSXBIjSTVWKY7YWBII3UjQM6LhFur1alIXWJ9/Hf4mxgZqIuyX1yEsVf/qct4/sT0NStmvIPZs5de3SNNy0' >bootfs/userconf.txt
 
 echo "Copy original image archive"
 sudo cp "${IMAGE_ARCHIVE_FILE}" "rootfs/var/tmp/${IMAGE_ARCHIVE_FILE}"
