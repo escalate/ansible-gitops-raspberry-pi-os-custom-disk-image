@@ -22,9 +22,9 @@ Any configuration change of the Raspberry Pi should now be possible via the conf
 1. Define necessary environment variables needed for the later ansible-pull run.
 
 ```
-export ANSIBLE_HOSTNAME=testserver.fritz.box
-export ANSIBLE_REPOSITORY_URL=https://github.com/escalate/ansible-gitops-example-repository.git
-export ANSIBLE_VAULT_PASSWORD=s3cret
+export ANSIBLE_HOSTNAME='testserver.fritz.box'
+export ANSIBLE_REPOSITORY_URL='https://github.com/escalate/ansible-gitops-example-repository.git'
+export ANSIBLE_VAULT_PASSWORD='s3cret'
 ```
 
 2. Start the build process with one of the following commands.
