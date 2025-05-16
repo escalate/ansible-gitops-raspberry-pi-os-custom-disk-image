@@ -17,8 +17,8 @@ build-64bit: clean
 
 .PHONY: clean
 clean:
-	rm --force *.zip
-	rm --force *.zip.*
+	rm --force *.xz
+	rm --force *.xz.*
 	rm --force *.img
 	rm --force *.tar.bz2
 	rm --force *.tar.bz2.*
