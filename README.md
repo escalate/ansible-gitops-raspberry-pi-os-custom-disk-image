@@ -6,7 +6,7 @@ A build tool to create a customized Raspberry Pi OS disk image which initiates t
 
 ## How does it work?
 
-The build tool downloads the latest [Raspberry Pi OS Lite (32-bit / 64-bit)](https://www.raspberrypi.org/software/operating-systems/) disk image and creates a systemd service inside it to bootstrap the Ansible GitOps workflow on first boot.
+The build tool downloads the latest [Raspberry Pi OS Lite (32-bit / 64-bit)](https://www.raspberrypi.com/software/operating-systems/) disk image and creates a systemd service inside it to bootstrap the Ansible GitOps workflow on first boot.
 
 After the Raspberry Pi boots successfully with the customized disk image, the systemd service prepares all needed dependencies and runs [ansible-pull](https://docs.ansible.com/ansible/latest/cli/ansible-pull.html) with the user pre-configured environment variables.
 
