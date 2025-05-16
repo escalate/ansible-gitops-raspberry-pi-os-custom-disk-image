@@ -10,7 +10,7 @@ The build tool downloads the latest [Raspberry Pi OS Lite (32-bit / 64-bit)](htt
 
 After the Raspberry Pi boots successfully with the customized disk image, the systemd service prepares all needed dependencies and runs [ansible-pull](https://docs.ansible.com/ansible/latest/cli/ansible-pull.html) with the user pre-configured environment variables.
 
-Ansible-pull checks out the pre-configured Git repository and runs the playbook `bootstrap.yml`.
+Ansible-pull checks out the pre-configured [Git repository](https://github.com/escalate/ansible-gitops-example-repository/) and runs the playbook `bootstrap.yml`.
 All steps for the further process must be stored in the `bootstrap.yml` playbook e.g. the preparation of an external USB drive as well as a cronjob for the periodical execution of ansible-pull.
 
 After the successful run of the playbook, a marker is set to prevent the systemd service from starting again at the next boot. Finally, the system is rebooted to complete all changes.
