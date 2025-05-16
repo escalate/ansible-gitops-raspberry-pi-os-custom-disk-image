@@ -41,7 +41,7 @@ make build-32bit
 make build-64bit
 ```
 
-3. Flash the customized disk image with [Etcher](https://www.balena.io/etcher/) to the SD card.
+3. Flash the customized disk image with [balena Etcher](https://etcher.balena.io/) to the SD card.
 
 4. Insert the SD card into the Raspberry Pi and power it up. Done.
 
