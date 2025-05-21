@@ -2,7 +2,7 @@
 
 # Ansible GitOps - Raspberry Pi OS custom disk image
 
-A build tool to create a customized Raspberry Pi OS disk image which initiates the Ansible GitOps workflow on first boot.
+A build tool based on [CustoPiZe](https://github.com/OctoPrint/CustoPiZer) to create a customized Raspberry Pi OS disk image which initiates the Ansible GitOps workflow on first boot.
 
 ## How does it work?
 
