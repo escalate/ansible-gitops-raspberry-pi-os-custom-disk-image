@@ -5,7 +5,7 @@ echo "Run Ansible playbook"
 ansible-pull \
   --url="${ANSIBLE_REPOSITORY_URL}" \
   --directory="/etc/gitops" \
-  --inventory="/etc/ansible/hosts" \
+  --inventory="/etc/ansible/hosts.yml" \
   --vault-password-file="/etc/ansible/.vault_pass.txt" \
   --diff \
   --verbose \
