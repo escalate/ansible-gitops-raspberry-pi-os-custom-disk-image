@@ -1,9 +1,10 @@
+# build
+CustoPiZer/
+workspace/
+
 # vim
 *.swp
 
-# output
+# disk images
 *.xz
-*.xz.*
 *.img
-*.tar.bz2
-*.tar.bz2.*
