@@ -13,14 +13,15 @@ touch "${BOOT_PATH}/ssh.txt"
 
 echo "Add default user pi with password raspberry"
 # shellcheck disable=SC2016
-echo 'pi:$6$MVEGdHTqed7c7za0$ESdhSXBIjSTVWKY7YWBII3UjQM6LhFur1alIXWJ9/Hf4mxgZqIuyX1yEsVf/qct4/sT0NStmvIPZs5de3SNNy0' | tee "${BOOT_PATH}/userconf.txt" >/dev/null
+echo 'pi:$6$MVEGdHTqed7c7za0$ESdhSXBIjSTVWKY7YWBII3UjQM6LhFur1alIXWJ9/Hf4mxgZqIuyX1yEsVf/qct4/sT0NStmvIPZs5de3SNNy0' >"${BOOT_PATH}/userconf.txt"
 
 echo "Copy original image archive"
 cp "/files/${DOWNLOAD_IMAGE_ARCHIVE}" "/var/tmp/${DOWNLOAD_IMAGE_ARCHIVE}"
 cp "/files/${DOWNLOAD_IMAGE_ARCHIVE}.sha256" "/var/tmp/${DOWNLOAD_IMAGE_ARCHIVE}.sha256"
 
 echo "Set hostname"
-echo "${ANSIBLE_HOSTNAME}" | tee "/etc/hostname"
+echo "${ANSIBLE_HOSTNAME}" >"/etc/hostname"
+sed --in-place "s/raspberrypi/${ANSIBLE_HOSTNAME}/g" "/etc/hosts"
 
 echo "Create GitOps bootstrap systemd service"
 cp "/files/gitops-bootstrap.service" "/etc/systemd/system/gitops-bootstrap.service"

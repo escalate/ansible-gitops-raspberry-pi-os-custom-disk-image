@@ -56,7 +56,7 @@ if [ "${ARCH}" = "64" ]; then
   echo "EDITBASE_ARCH=aarch64" >"workspace/${ARCH}/config.local"
 fi
 
-sed -i "s/ ${DOWNLOAD_IMAGE_ARCHIVE}/ workspace\/${ARCH}\/${DOWNLOAD_IMAGE_ARCHIVE}/" "workspace/${ARCH}/${DOWNLOAD_IMAGE_ARCHIVE}.sha256"
+sed --in-place "s/ ${DOWNLOAD_IMAGE_ARCHIVE}/ workspace\/${ARCH}\/${DOWNLOAD_IMAGE_ARCHIVE}/g" "workspace/${ARCH}/${DOWNLOAD_IMAGE_ARCHIVE}.sha256"
 sha256sum --check "workspace/${ARCH}/${DOWNLOAD_IMAGE_ARCHIVE}.sha256"
 
 echo "Unarchive disk image archive"
