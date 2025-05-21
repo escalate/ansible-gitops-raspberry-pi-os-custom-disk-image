@@ -11,7 +11,7 @@ echo "Install Git"
 apt-get --yes install git
 
 echo "Install Ansible"
-pip3 install --disable-pip-version-check --break-system-packages ansible
+pip3 install --disable-pip-version-check --break-system-packages --root-user-action=ignore ansible
 
 echo "Create configuration directories"
 mkdir --parent /etc/ansible
