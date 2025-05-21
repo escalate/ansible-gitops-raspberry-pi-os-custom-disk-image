@@ -45,12 +45,6 @@ make build-64bit
 
 4. Insert the SD card into the Raspberry Pi and power it up. Done.
 
-## How does the customization work?
-
-With the choosen approach it is only possible to add / change / delete static files inside the disk image.
-To run native OS commands like apt, the QEMU user emulation would have to be used.
-For the moment it is good enough to work with.
-
 ## License
 
 MIT
