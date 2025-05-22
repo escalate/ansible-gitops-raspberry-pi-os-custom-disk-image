@@ -1,7 +1,7 @@
 [Unit]
 Description=GitOps Bootstrap
 After=network-online.target
-ConditionPathExists=!/boot/gitops-bootstrap.done
+ConditionPathExists=!/boot/firmware/gitops-bootstrap.done
 
 [Service]
 Type=oneshot

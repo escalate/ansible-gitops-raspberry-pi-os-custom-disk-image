@@ -12,7 +12,7 @@ ansible-pull \
   bootstrap.yml
 
 echo "Create marker file"
-touch /boot/gitops-bootstrap.done
+touch /boot/firmware/gitops-bootstrap.done
 
 echo "Reboot system"
 reboot
