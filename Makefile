@@ -4,6 +4,7 @@ SHELL = /bin/bash
 .PHONY: build-32bit
 build-32bit:
 	test -n "$(ANSIBLE_HOSTNAME)" # check env variable $$ANSIBLE_HOSTNAME
+	test -n "$(ANSIBLE_HOSTGROUP)" # check env variable $$ANSIBLE_HOSTGROUP
 	test -n "$(ANSIBLE_REPOSITORY_URL)" # check env variable $$ANSIBLE_REPOSITORY_URL
 	test -n "$(ANSIBLE_VAULT_PASSWORD)" # check env variable $$ANSIBLE_VAULT_PASSWORD
 	./build.sh 32
@@ -11,6 +12,7 @@ build-32bit:
 .PHONY: build-64bit
 build-64bit:
 	test -n "$(ANSIBLE_HOSTNAME)" # check env variable $$ANSIBLE_HOSTNAME
+	test -n "$(ANSIBLE_HOSTGROUP)" # check env variable $$ANSIBLE_HOSTGROUP
 	test -n "$(ANSIBLE_REPOSITORY_URL)" # check env variable $$ANSIBLE_REPOSITORY_URL
 	test -n "$(ANSIBLE_VAULT_PASSWORD)" # check env variable $$ANSIBLE_VAULT_PASSWORD
 	./build.sh 64

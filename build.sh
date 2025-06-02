@@ -73,6 +73,7 @@ echo "Define customization environment variables"
 {
   echo "DOWNLOAD_IMAGE_ARCHIVE=${DOWNLOAD_IMAGE_ARCHIVE}"
   echo "ANSIBLE_HOSTNAME=${ANSIBLE_HOSTNAME}"
+  echo "ANSIBLE_HOSTGROUP=${ANSIBLE_HOSTGROUP}"
   echo "ANSIBLE_REPOSITORY_URL=${ANSIBLE_REPOSITORY_URL}"
   echo "ANSIBLE_VAULT_PASSWORD=${ANSIBLE_VAULT_PASSWORD}"
 } >"workspace/${ARCH}/gitops-config.env"

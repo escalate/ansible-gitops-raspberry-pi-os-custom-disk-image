@@ -1,14 +1,13 @@
 [Unit]
 Description=GitOps Bootstrap
 After=network-online.target
-ConditionPathExists=!/boot/firmware/gitops-bootstrap.done
 
 [Service]
 Type=oneshot
-EnvironmentFile=/boot/firmware/gitops-bootstrap.env
+EnvironmentFile=/boot/firmware/gitops.env
 ExecStartPre=/bin/sleep 60
-ExecStartPre=/boot/firmware/gitops-install-and-configure-ansible.sh
-ExecStart=/boot/firmware/gitops-run-ansible-playbook-and-reboot.sh
+ExecStartPre=/usr/local/bin/gitops-preparation.sh
+ExecStart=/usr/local/bin/gitops-bootstrap.sh
 RemainAfterExit=true
 
 [Install]

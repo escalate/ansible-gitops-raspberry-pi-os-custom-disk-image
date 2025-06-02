@@ -26,7 +26,8 @@ jobs:
 
       - name: Run build tool for ${{ matrix.arch }}-bit disk image
         run: |
-          export ANSIBLE_HOSTNAME='example.fritz.box'
-          export ANSIBLE_REPOSITORY_URL='https://github.com/escalate/ansible-gitops-example-repository.git'
+          export ANSIBLE_HOSTNAME=example.fritz.box
+          export ANSIBLE_HOSTGROUP=example
+          export ANSIBLE_REPOSITORY_URL=https://github.com/escalate/ansible-gitops-example-repository.git
           export ANSIBLE_VAULT_PASSWORD='REDACTED'
           make build-${{ matrix.arch }}bit
