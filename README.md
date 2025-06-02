@@ -24,7 +24,7 @@ All configuration changes on the Raspberry Pi should now be possible via the `si
 ```
 # The Fully Qualified Domain Name (FQDN) of your server
 export ANSIBLE_HOSTNAME="testserver.fritz.box"
-"
+
 # The Ansible inventory group name where your server belongs to. For more information see https://docs.ansible.com/ansible/latest/user_guide/intro_inventory.html
 export ANSIBLE_HOSTGROUP="testing"
 
