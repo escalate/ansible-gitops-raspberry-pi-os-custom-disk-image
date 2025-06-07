@@ -29,7 +29,7 @@ export ANSIBLE_HOSTNAME="testserver.fritz.box"
 export ANSIBLE_HOSTGROUP="testing"
 
 # The URL of your Ansible control repository
-export ANSIBLE_REPOSITORY_URL"=https://github.com/escalate/ansible-gitops-example-repository.git"
+export ANSIBLE_REPOSITORY_URL="https://github.com/escalate/ansible-gitops-example-repository.git"
 
 # The secret password to decrypt your Ansible Vault file. For more information see https://docs.ansible.com/ansible/latest/user_guide/vault.html
 export ANSIBLE_VAULT_PASSWORD="s3cret"
