@@ -11,7 +11,7 @@ The build tool downloads the latest [Raspberry Pi OS Lite (32-bit / 64-bit)](htt
 After the Raspberry Pi has successfully booted with the customized disk image, the systemd service prepares all required [dependencies](https://github.com/escalate/ansible-gitops-raspberry-pi-os-custom-disk-image/blob/master/scripts/files/gitops-preparation.sh) and executes a [bootstrap script](https://github.com/escalate/ansible-gitops-raspberry-pi-os-custom-disk-image/blob/master/scripts/files/gitops-bootstrap.sh) with the settings preconfigured by the user.
 
 The [bootstrap script](https://github.com/escalate/ansible-gitops-raspberry-pi-os-custom-disk-image/blob/master/scripts/files/gitops-bootstrap.sh) checks out the preconfigured [Git repository](https://github.com/escalate/ansible-gitops-example-repository/), installs required roles and collections and runs the `bootstrap.yml` playbook.
-The `bootstrap.yml` playbook must contain all steps for the further process, e.g. the preparation of an external USB drive and a cronjob for the regular execution of the [deployment script](https://github.com/escalate/ansible-gitops-raspberry-pi-os-custom-disk-image/blob/master/scripts/files/gitops-deployment.sh).
+The `bootstrap.yml` playbook must contain all steps for the further process, e.g. the preparation of an external USB drive and a cronjob for the regular execution of the [rollout script](https://github.com/escalate/ansible-gitops-raspberry-pi-os-custom-disk-image/blob/master/scripts/files/gitops-rollout.sh).
 
 After the successful run of the `bootstrap.yml` playbook, markers are set to prevent the scripts from being restarted at the next system start. Finally, the system is rebooted to complete all changes.
 

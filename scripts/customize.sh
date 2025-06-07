@@ -25,7 +25,7 @@ sed --in-place "s/raspberrypi/${ANSIBLE_HOSTNAME}/g" "/etc/hosts"
 
 echo "Create GitOps scripts"
 cp "/files/gitops-bootstrap.sh" "/usr/local/bin/gitops-bootstrap.sh"
-cp "/files/gitops-deployment.sh" "/usr/local/bin/gitops-deployment.sh"
+cp "/files/gitops-rollout.sh" "/usr/local/bin/gitops-rollout.sh"
 cp "/files/gitops-preparation.sh" "/usr/local/bin/gitops-preparation.sh"
 cp "/files/gitops-utils.sh" "/usr/local/bin/gitops-utils.sh"
 

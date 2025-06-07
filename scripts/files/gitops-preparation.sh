@@ -2,7 +2,7 @@
 set -e -E -u -C -o pipefail
 
 if [[ -f "/boot/firmware/gitops-preparation.done" ]]; then
-  echo "GitOps preparation already completed. Exiting."
+  echo "GitOps preparation already completed - Exiting"
   exit 0
 fi
 
@@ -51,5 +51,5 @@ EOT
 echo "Create Ansible Vault password file"
 echo "${ANSIBLE_VAULT_PASSWORD}" >/etc/ansible/.vault_pass.txt
 
-echo "Create marker file"
+echo "Create preparation marker file"
 touch "/boot/firmware/gitops-preparation.done"

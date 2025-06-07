@@ -3,6 +3,11 @@ set -e -E -u -C -o pipefail
 
 exec 1> >(logger --tag "$(basename "$0")") 2>&1
 
+if [[ ! -f "/boot/firmware/gitops-preparation.done" ]]; then
+  echo "GitOps bootstrap not completed - Exiting"
+  exit 1
+fi
+
 # shellcheck source=/dev/null
 source "/boot/firmware/gitops.env"
 
@@ -10,6 +15,4 @@ source "/boot/firmware/gitops.env"
 source "/usr/local/bin/gitops-utils.sh"
 
 checkout_repository
-install_roles
-install_collections
-run_ansible_playbook "site.yml"
+rollout
