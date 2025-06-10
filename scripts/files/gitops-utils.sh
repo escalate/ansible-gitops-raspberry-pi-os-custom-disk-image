@@ -14,6 +14,7 @@ install_roles() {
   if [[ -f "/etc/gitops/requirements.yml" ]]; then
     echo "Install Ansible roles with dependencies"
     cd "/etc/gitops/"
+    export ANSIBLE_CONFIG="/etc/ansible/ansible.cfg"
     ansible-galaxy role install \
       --roles-path="/etc/ansible/roles" \
       --role-file="requirements.yml" \
@@ -27,6 +28,7 @@ install_collections() {
   if [[ -f "/etc/gitops/requirements.yml" ]]; then
     echo "Install Ansible collections with dependencies"
     cd "/etc/gitops/"
+    export ANSIBLE_CONFIG="/etc/ansible/ansible.cfg"
     ansible-galaxy collection install \
       --collections-path="/etc/ansible/collections" \
       --requirements-file="requirements.yml" \
@@ -38,11 +40,10 @@ install_collections() {
 
 deploy_ansible_playbook() {
   ANSIBLE_PLAYBOOK_FILE="$1"
-  # shellcheck disable=SC2034
-  ANSIBLE_CONFIG="/etc/gitops/ansible.cfg"
 
   echo "Deploy Ansible ${ANSIBLE_PLAYBOOK_FILE} playbook"
   cd "/etc/gitops/"
+  export ANSIBLE_CONFIG="/etc/ansible/ansible.cfg"
   ansible-playbook \
     --inventory="/etc/ansible/hosts.yml" \
     "${ANSIBLE_PLAYBOOK_FILE}"
